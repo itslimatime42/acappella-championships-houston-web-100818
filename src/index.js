@@ -73,17 +73,9 @@ const deleteGroup = function(groupToDelete) {
 }
 
 const sortTableBy = function(columnId) {
-  if (columnId === 'cant-sort') {
-    alert('Cannot sort by this column.')
-  } else {
-    let category = columnId.split('-')[0]
-    let subcategory = columnId.split('-')[1]
-    sortGroups(category, subcategory)
-  }
-  render()
-}
+  let category = columnId.split('-')[0]
+  let subcategory = columnId.split('-')[1]
 
-const sortGroups = function(category, subcategory) {
   groups = groups.sort(function(groupA, groupB) {
     if (subcategory) {
       return groupA[category][subcategory].localeCompare(groupB[category][subcategory])
@@ -91,12 +83,17 @@ const sortGroups = function(category, subcategory) {
       return groupA[category].localeCompare(groupB[category])
     }
   })
+
+  render()
 }
 
 // Add event listener for every column title in table
 for (let i = 0; i < tableHeaders.children.length; i++) {
   let columnTitle = tableHeaders.children[i]
-  columnTitle.addEventListener('click', function() {
-    sortTableBy(columnTitle.id)
-  })
+
+  if (columnTitle.id !== "cant-sort") {
+    columnTitle.addEventListener('click', function() {
+      sortTableBy(columnTitle.id)
+    })
+  }
 }

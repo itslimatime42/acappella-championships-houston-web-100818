@@ -76,11 +76,10 @@ const sortTableBy = function(columnId) {
   if (columnId === 'cant-sort') {
     alert('Cannot sort by this column.')
   } else {
+    let category = columnId.split('-')[0]
     let subcategory = columnId.split('-')[1]
-    category = columnId.split('-')[0]
     sortGroups(category, subcategory)
   }
-
   render()
 }
 

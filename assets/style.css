@@ -15,6 +15,18 @@ th {
   font-weight: bold;
 }
 
+img {
+  width: 30px;
+}
+
+.padding-center {
+  padding: 5px;
+}
+
+.button-center {
+  text-align: center;
+}
+
 .width-75 {
   width: 75%;
 }
